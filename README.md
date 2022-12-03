@@ -25,7 +25,6 @@ source venv/scripts/activate
 python pip install -r requirements.txt
 
 ## 4) Сделать миграции
-python manage.py makemigrations
 python manage.py migrate
 
 ## 5) Запустить сервер
@@ -33,11 +32,47 @@ python manage.py runserver
 
 # Примеры
 
-Для доступа к API необходимо получить токен: 
-Нужно выполнить POST-запрос localhost:8000/api/v1/token/ передав поля username и password. API вернет JWT-токен
+Для неавторизованных пользователей работа с API доступна в режиме чтения,
+что-либо изменить или создать не получится.
+GET api/v1/posts/ - получить список всех публикаций.
+При указании параметров limit и offset выдача должна работать с пагинацией
+GET api/v1/posts/{id}/ - получение публикации по id
 
-Дальше, передав токен можно будет обращаться к методам, например: 
+GET api/v1/groups/ - получение списка доступных сообществ
+GET api/v1/groups/{id}/ - получение информации о сообществе по id
 
-/api/v1/posts/ (GET, POST, PUT, PATCH, DELETE)
+GET api/v1/{post_id}/comments/ - получение всех комментариев к публикации
+GET api/v1/{post_id}/comments/{id}/ - Получение комментария к публикации по id
 
-При отправке запроса передавайте токен в заголовке Authorization: Bearer <токен>
+Для авторизованных пользователей работа с API доступна в следующем виде:
+Для создания публикации используем:
+POST /api/v1/posts/
+в body
+{
+"text": "string",
+"image": "string",
+"group": 0
+}
+
+Обновление публикации:
+PUT /api/v1/posts/{id}/
+в body
+{
+"text": "string",
+"image": "string",
+"group": 0
+}
+
+Частичное обновление публикации:
+PATCH /api/v1/posts/{id}/
+в body
+{
+"text": "string",
+"image": "string",
+"group": 0
+}
+
+DEL /api/v1/posts/{id}/
+
+Получение доступа к эндпоинту /api/v1/follow/
+(подписки) доступен только для авторизованных пользователей.

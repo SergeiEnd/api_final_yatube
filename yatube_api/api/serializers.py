@@ -11,7 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = (['id', 'author', 'group', 'text', 'pub_date', 'image'])
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -24,14 +24,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ['id', 'author', 'post', 'text', 'created']
 
 
 class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        fields = '__all__'
+        fields = ['id', 'title', 'slug', 'description']
 
 
 class FollowSerializer(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class FollowSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, data):
-        if data['user'] == data['following']:
+        if self.context['request'].user == data['following']:
             raise serializers.ValidationError(
                 'Нельзя подписаться на самого себя!')
         return data

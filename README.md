@@ -1,8 +1,16 @@
 # Описание
 
-Проект представляет собой API для проекта yatube.
+API для Yatub представляет собой проект социальной сети в которой реализованы следующие возможности, 
+публиковать записи, комментировать записи, а так же подписываться или отписываться от авторов.
 
-Ключевые моменты:
+# Ключевые моменты:
+В проекте использованны данные инструменты:
+Django==2.2.16
+djangorestframework==3.12.4
+djangorestframework-simplejwt==4.7.2
+Pillow==8.3.1
+PyJWT==2.1.0
+requests==2.26.0
 
 Применены вьюсеты.
 
@@ -14,7 +22,10 @@
 
 # Установка
 
-## 1) Склонировать репозиторий
+## 1) Склонировать репозиторий 
+
+git clone git@github.com:SergeiEnd/api_final_yatube.git
+
 ## 2) Создать и активировать виртуальное окружение для проекта
 
 python -m venv venv
@@ -22,12 +33,14 @@ python -m venv venv
 source venv/scripts/activate
 
 ## 3) Установить зависимости
+
 python pip install -r requirements.txt
 
 ## 4) Сделать миграции
 python manage.py migrate
 
 ## 5) Запустить сервер
+
 python manage.py runserver
 
 # Примеры
@@ -49,30 +62,35 @@ GET api/v1/{post_id}/comments/{id}/ - Получение комментария 
 POST /api/v1/posts/
 в body
 {
-"text": "string",
-"image": "string",
-"group": 0
+	"text": "string",
+	"image": "string",
+	"group": 0
 }
 
 Обновление публикации:
 PUT /api/v1/posts/{id}/
 в body
 {
-"text": "string",
-"image": "string",
-"group": 0
+	"text": "string",
+	"image": "string",
+	"group": 0
 }
 
 Частичное обновление публикации:
 PATCH /api/v1/posts/{id}/
 в body
 {
-"text": "string",
-"image": "string",
-"group": 0
+	"text": "string",
+	"image": "string",
+	"group": 0
 }
 
 DEL /api/v1/posts/{id}/
 
 Получение доступа к эндпоинту /api/v1/follow/
 (подписки) доступен только для авторизованных пользователей.
+
+## Ссылка на общую документацию: http://127.0.0.1:8000/redoc/  (доступна при запущенном сервере)
+
+
+Автор: Ендовицкий Сергей (https://github.com/SergeiEnd)

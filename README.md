@@ -94,3 +94,5 @@ DEL /api/v1/posts/{id}/
 
 
 Автор: Ендовицкий Сергей (https://github.com/SergeiEnd)
+(lightfire.89@mail.ru) 
+telegram (@end_sergio)

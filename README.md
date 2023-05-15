@@ -93,6 +93,9 @@ DEL /api/v1/posts/{id}/
 ## Ссылка на общую документацию: http://127.0.0.1:8000/redoc/  (доступна при запущенном сервере)
 
 
-Автор: Ендовицкий Сергей (https://github.com/SergeiEnd)
+Автор: 
+Ендовицкий Сергей (https://github.com/SergeiEnd)
+
 (lightfire.89@mail.ru) 
+
 telegram (@end_sergio)
